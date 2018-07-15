@@ -51,5 +51,16 @@ namespace TextEncodingChange {
             this.tbxLog.AppendText(file + Environment.NewLine);
          }
       }
+
+      private void btnHelp_Click(object sender, EventArgs e) {
+         var caption = "Text Encoding Coverter";
+         var link = "https://github.com/sim511777/TextEncodingChange";
+         var message = link + "\r\nWould yo visit?";
+
+         var dr = MessageBox.Show(message, caption, MessageBoxButtons.YesNo);
+         if (dr == DialogResult.Yes) {
+            System.Diagnostics.Process.Start(link);
+         }
+      }
    }
 }
