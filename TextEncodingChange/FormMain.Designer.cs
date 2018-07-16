@@ -25,27 +25,50 @@
       private void InitializeComponent() {
          this.btnDo = new System.Windows.Forms.Button();
          this.tbxLog = new System.Windows.Forms.TextBox();
-         this.cbxSrcEncoding = new System.Windows.Forms.ComboBox();
          this.dlgOpen = new System.Windows.Forms.OpenFileDialog();
-         this.cbxDstEncoding = new System.Windows.Forms.ComboBox();
-         this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-         this.label1 = new System.Windows.Forms.Label();
-         this.label2 = new System.Windows.Forms.Label();
-         this.panel1 = new System.Windows.Forms.Panel();
          this.btnHelp = new System.Windows.Forms.Button();
+         this.lbxFile = new System.Windows.Forms.ListBox();
+         this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+         this.panel4 = new System.Windows.Forms.Panel();
+         this.label2 = new System.Windows.Forms.Label();
+         this.panel3 = new System.Windows.Forms.Panel();
+         this.grdEncoder = new System.Windows.Forms.PropertyGrid();
+         this.lblEncSetting = new System.Windows.Forms.Label();
+         this.panel2 = new System.Windows.Forms.Panel();
+         this.btnDelete = new System.Windows.Forms.Button();
+         this.btnAdd = new System.Windows.Forms.Button();
+         this.panel6 = new System.Windows.Forms.Panel();
+         this.tbxSrcPreview = new System.Windows.Forms.TextBox();
+         this.label4 = new System.Windows.Forms.Label();
+         this.panel5 = new System.Windows.Forms.Panel();
+         this.label3 = new System.Windows.Forms.Label();
+         this.panel1 = new System.Windows.Forms.Panel();
+         this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+         this.panel7 = new System.Windows.Forms.Panel();
+         this.tbxDstPreview = new System.Windows.Forms.TextBox();
+         this.label1 = new System.Windows.Forms.Label();
          ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
          this.splitContainer1.Panel1.SuspendLayout();
          this.splitContainer1.Panel2.SuspendLayout();
          this.splitContainer1.SuspendLayout();
+         this.panel4.SuspendLayout();
+         this.panel3.SuspendLayout();
+         this.panel2.SuspendLayout();
+         this.panel6.SuspendLayout();
+         this.panel5.SuspendLayout();
          this.panel1.SuspendLayout();
+         ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+         this.splitContainer2.Panel1.SuspendLayout();
+         this.splitContainer2.Panel2.SuspendLayout();
+         this.splitContainer2.SuspendLayout();
+         this.panel7.SuspendLayout();
          this.SuspendLayout();
          // 
          // btnDo
          // 
-         this.btnDo.Dock = System.Windows.Forms.DockStyle.Right;
-         this.btnDo.Location = new System.Drawing.Point(382, 0);
+         this.btnDo.Location = new System.Drawing.Point(3, 6);
          this.btnDo.Name = "btnDo";
-         this.btnDo.Size = new System.Drawing.Size(44, 20);
+         this.btnDo.Size = new System.Drawing.Size(75, 23);
          this.btnDo.TabIndex = 0;
          this.btnDo.Text = "Go";
          this.btnDo.UseVisualStyleBackColor = true;
@@ -53,41 +76,42 @@
          // 
          // tbxLog
          // 
+         this.tbxLog.BackColor = System.Drawing.SystemColors.Window;
          this.tbxLog.Dock = System.Windows.Forms.DockStyle.Fill;
          this.tbxLog.Location = new System.Drawing.Point(0, 20);
          this.tbxLog.Multiline = true;
          this.tbxLog.Name = "tbxLog";
-         this.tbxLog.Size = new System.Drawing.Size(448, 347);
+         this.tbxLog.ReadOnly = true;
+         this.tbxLog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+         this.tbxLog.Size = new System.Drawing.Size(525, 90);
          this.tbxLog.TabIndex = 1;
-         // 
-         // cbxSrcEncoding
-         // 
-         this.cbxSrcEncoding.DisplayMember = "EncodingName";
-         this.cbxSrcEncoding.Dock = System.Windows.Forms.DockStyle.Fill;
-         this.cbxSrcEncoding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-         this.cbxSrcEncoding.FormattingEnabled = true;
-         this.cbxSrcEncoding.Location = new System.Drawing.Point(30, 0);
-         this.cbxSrcEncoding.Name = "cbxSrcEncoding";
-         this.cbxSrcEncoding.Size = new System.Drawing.Size(166, 20);
-         this.cbxSrcEncoding.Sorted = true;
-         this.cbxSrcEncoding.TabIndex = 2;
          // 
          // dlgOpen
          // 
          this.dlgOpen.Multiselect = true;
          // 
-         // cbxDstEncoding
+         // btnHelp
          // 
-         this.cbxDstEncoding.DisplayMember = "EncodingName";
-         this.cbxDstEncoding.Dock = System.Windows.Forms.DockStyle.Fill;
-         this.cbxDstEncoding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-         this.cbxDstEncoding.FormattingEnabled = true;
-         this.cbxDstEncoding.Location = new System.Drawing.Point(29, 0);
-         this.cbxDstEncoding.Name = "cbxDstEncoding";
-         this.cbxDstEncoding.Size = new System.Drawing.Size(153, 20);
-         this.cbxDstEncoding.Sorted = true;
-         this.cbxDstEncoding.TabIndex = 2;
-         this.cbxDstEncoding.ValueMember = "Name";
+         this.btnHelp.Location = new System.Drawing.Point(84, 7);
+         this.btnHelp.Name = "btnHelp";
+         this.btnHelp.Size = new System.Drawing.Size(23, 23);
+         this.btnHelp.TabIndex = 1;
+         this.btnHelp.Text = "?";
+         this.btnHelp.UseVisualStyleBackColor = true;
+         this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
+         // 
+         // lbxFile
+         // 
+         this.lbxFile.DisplayMember = "FilePath";
+         this.lbxFile.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.lbxFile.FormattingEnabled = true;
+         this.lbxFile.ItemHeight = 12;
+         this.lbxFile.Location = new System.Drawing.Point(0, 20);
+         this.lbxFile.Name = "lbxFile";
+         this.lbxFile.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+         this.lbxFile.Size = new System.Drawing.Size(503, 553);
+         this.lbxFile.TabIndex = 2;
+         this.lbxFile.SelectedIndexChanged += new System.EventHandler(this.lbxFile_SelectedIndexChanged);
          // 
          // splitContainer1
          // 
@@ -97,80 +121,245 @@
          // 
          // splitContainer1.Panel1
          // 
-         this.splitContainer1.Panel1.Controls.Add(this.cbxSrcEncoding);
-         this.splitContainer1.Panel1.Controls.Add(this.label1);
+         this.splitContainer1.Panel1.Controls.Add(this.panel4);
+         this.splitContainer1.Panel1.Controls.Add(this.panel3);
+         this.splitContainer1.Panel1.Controls.Add(this.panel2);
          // 
          // splitContainer1.Panel2
          // 
-         this.splitContainer1.Panel2.Controls.Add(this.cbxDstEncoding);
-         this.splitContainer1.Panel2.Controls.Add(this.label2);
-         this.splitContainer1.Size = new System.Drawing.Size(382, 20);
-         this.splitContainer1.SplitterDistance = 196;
+         this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
+         this.splitContainer1.Panel2.Controls.Add(this.panel5);
+         this.splitContainer1.Panel2.Controls.Add(this.panel1);
+         this.splitContainer1.Size = new System.Drawing.Size(1036, 720);
+         this.splitContainer1.SplitterDistance = 505;
          this.splitContainer1.TabIndex = 3;
          // 
-         // label1
+         // panel4
          // 
-         this.label1.AutoSize = true;
-         this.label1.Dock = System.Windows.Forms.DockStyle.Left;
-         this.label1.Location = new System.Drawing.Point(0, 0);
-         this.label1.Name = "label1";
-         this.label1.Size = new System.Drawing.Size(30, 12);
-         this.label1.TabIndex = 0;
-         this.label1.Text = "SRC";
-         this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+         this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+         this.panel4.Controls.Add(this.lbxFile);
+         this.panel4.Controls.Add(this.label2);
+         this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.panel4.Location = new System.Drawing.Point(0, 0);
+         this.panel4.Name = "panel4";
+         this.panel4.Size = new System.Drawing.Size(505, 575);
+         this.panel4.TabIndex = 5;
          // 
          // label2
          // 
-         this.label2.AutoSize = true;
-         this.label2.Dock = System.Windows.Forms.DockStyle.Left;
+         this.label2.Dock = System.Windows.Forms.DockStyle.Top;
          this.label2.Location = new System.Drawing.Point(0, 0);
          this.label2.Name = "label2";
-         this.label2.Size = new System.Drawing.Size(29, 12);
-         this.label2.TabIndex = 1;
-         this.label2.Text = "DST";
+         this.label2.Size = new System.Drawing.Size(503, 20);
+         this.label2.TabIndex = 0;
+         this.label2.Text = "Source File List";
          this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+         // 
+         // panel3
+         // 
+         this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+         this.panel3.Controls.Add(this.grdEncoder);
+         this.panel3.Controls.Add(this.lblEncSetting);
+         this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+         this.panel3.Location = new System.Drawing.Point(0, 575);
+         this.panel3.Name = "panel3";
+         this.panel3.Size = new System.Drawing.Size(505, 112);
+         this.panel3.TabIndex = 4;
+         // 
+         // grdEncoder
+         // 
+         this.grdEncoder.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.grdEncoder.HelpVisible = false;
+         this.grdEncoder.Location = new System.Drawing.Point(0, 20);
+         this.grdEncoder.Name = "grdEncoder";
+         this.grdEncoder.PropertySort = System.Windows.Forms.PropertySort.NoSort;
+         this.grdEncoder.Size = new System.Drawing.Size(503, 90);
+         this.grdEncoder.TabIndex = 0;
+         this.grdEncoder.ToolbarVisible = false;
+         this.grdEncoder.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.grdEncoder_PropertyValueChanged);
+         // 
+         // lblEncSetting
+         // 
+         this.lblEncSetting.Dock = System.Windows.Forms.DockStyle.Top;
+         this.lblEncSetting.Location = new System.Drawing.Point(0, 0);
+         this.lblEncSetting.Name = "lblEncSetting";
+         this.lblEncSetting.Size = new System.Drawing.Size(503, 20);
+         this.lblEncSetting.TabIndex = 0;
+         this.lblEncSetting.Text = "Encoding Setting - 0 items";
+         this.lblEncSetting.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+         // 
+         // panel2
+         // 
+         this.panel2.Controls.Add(this.btnDelete);
+         this.panel2.Controls.Add(this.btnAdd);
+         this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+         this.panel2.Location = new System.Drawing.Point(0, 687);
+         this.panel2.Name = "panel2";
+         this.panel2.Size = new System.Drawing.Size(505, 33);
+         this.panel2.TabIndex = 3;
+         // 
+         // btnDelete
+         // 
+         this.btnDelete.Location = new System.Drawing.Point(84, 6);
+         this.btnDelete.Name = "btnDelete";
+         this.btnDelete.Size = new System.Drawing.Size(75, 23);
+         this.btnDelete.TabIndex = 1;
+         this.btnDelete.Text = "Delete";
+         this.btnDelete.UseVisualStyleBackColor = true;
+         this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+         // 
+         // btnAdd
+         // 
+         this.btnAdd.Location = new System.Drawing.Point(3, 6);
+         this.btnAdd.Name = "btnAdd";
+         this.btnAdd.Size = new System.Drawing.Size(75, 23);
+         this.btnAdd.TabIndex = 0;
+         this.btnAdd.Text = "Add";
+         this.btnAdd.UseVisualStyleBackColor = true;
+         this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+         // 
+         // panel6
+         // 
+         this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+         this.panel6.Controls.Add(this.tbxSrcPreview);
+         this.panel6.Controls.Add(this.label4);
+         this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.panel6.Location = new System.Drawing.Point(0, 0);
+         this.panel6.Name = "panel6";
+         this.panel6.Size = new System.Drawing.Size(527, 280);
+         this.panel6.TabIndex = 6;
+         // 
+         // tbxSrcPreview
+         // 
+         this.tbxSrcPreview.BackColor = System.Drawing.SystemColors.Window;
+         this.tbxSrcPreview.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.tbxSrcPreview.Location = new System.Drawing.Point(0, 20);
+         this.tbxSrcPreview.Multiline = true;
+         this.tbxSrcPreview.Name = "tbxSrcPreview";
+         this.tbxSrcPreview.ReadOnly = true;
+         this.tbxSrcPreview.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+         this.tbxSrcPreview.Size = new System.Drawing.Size(525, 258);
+         this.tbxSrcPreview.TabIndex = 3;
+         // 
+         // label4
+         // 
+         this.label4.Dock = System.Windows.Forms.DockStyle.Top;
+         this.label4.Location = new System.Drawing.Point(0, 0);
+         this.label4.Name = "label4";
+         this.label4.Size = new System.Drawing.Size(525, 20);
+         this.label4.TabIndex = 0;
+         this.label4.Text = "SRC Preview";
+         this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+         // 
+         // panel5
+         // 
+         this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+         this.panel5.Controls.Add(this.tbxLog);
+         this.panel5.Controls.Add(this.label3);
+         this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
+         this.panel5.Location = new System.Drawing.Point(0, 575);
+         this.panel5.Name = "panel5";
+         this.panel5.Size = new System.Drawing.Size(527, 112);
+         this.panel5.TabIndex = 5;
+         // 
+         // label3
+         // 
+         this.label3.Dock = System.Windows.Forms.DockStyle.Top;
+         this.label3.Location = new System.Drawing.Point(0, 0);
+         this.label3.Name = "label3";
+         this.label3.Size = new System.Drawing.Size(525, 20);
+         this.label3.TabIndex = 0;
+         this.label3.Text = "Result";
+         this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
          // 
          // panel1
          // 
-         this.panel1.Controls.Add(this.splitContainer1);
-         this.panel1.Controls.Add(this.btnDo);
          this.panel1.Controls.Add(this.btnHelp);
-         this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-         this.panel1.Location = new System.Drawing.Point(0, 0);
+         this.panel1.Controls.Add(this.btnDo);
+         this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+         this.panel1.Location = new System.Drawing.Point(0, 687);
          this.panel1.Name = "panel1";
-         this.panel1.Size = new System.Drawing.Size(448, 20);
-         this.panel1.TabIndex = 4;
+         this.panel1.Size = new System.Drawing.Size(527, 33);
+         this.panel1.TabIndex = 0;
          // 
-         // btnHelp
+         // splitContainer2
          // 
-         this.btnHelp.Dock = System.Windows.Forms.DockStyle.Right;
-         this.btnHelp.Location = new System.Drawing.Point(426, 0);
-         this.btnHelp.Name = "btnHelp";
-         this.btnHelp.Size = new System.Drawing.Size(22, 20);
-         this.btnHelp.TabIndex = 1;
-         this.btnHelp.Text = "?";
-         this.btnHelp.UseVisualStyleBackColor = true;
-         this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
+         this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+         this.splitContainer2.Name = "splitContainer2";
+         this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+         // 
+         // splitContainer2.Panel1
+         // 
+         this.splitContainer2.Panel1.Controls.Add(this.panel6);
+         // 
+         // splitContainer2.Panel2
+         // 
+         this.splitContainer2.Panel2.Controls.Add(this.panel7);
+         this.splitContainer2.Size = new System.Drawing.Size(527, 575);
+         this.splitContainer2.SplitterDistance = 280;
+         this.splitContainer2.TabIndex = 7;
+         // 
+         // panel7
+         // 
+         this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+         this.panel7.Controls.Add(this.tbxDstPreview);
+         this.panel7.Controls.Add(this.label1);
+         this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.panel7.Location = new System.Drawing.Point(0, 0);
+         this.panel7.Name = "panel7";
+         this.panel7.Size = new System.Drawing.Size(527, 291);
+         this.panel7.TabIndex = 7;
+         // 
+         // tbxDstPreview
+         // 
+         this.tbxDstPreview.BackColor = System.Drawing.SystemColors.Window;
+         this.tbxDstPreview.Dock = System.Windows.Forms.DockStyle.Fill;
+         this.tbxDstPreview.Location = new System.Drawing.Point(0, 20);
+         this.tbxDstPreview.Multiline = true;
+         this.tbxDstPreview.Name = "tbxDstPreview";
+         this.tbxDstPreview.ReadOnly = true;
+         this.tbxDstPreview.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+         this.tbxDstPreview.Size = new System.Drawing.Size(525, 269);
+         this.tbxDstPreview.TabIndex = 3;
+         // 
+         // label1
+         // 
+         this.label1.Dock = System.Windows.Forms.DockStyle.Top;
+         this.label1.Location = new System.Drawing.Point(0, 0);
+         this.label1.Name = "label1";
+         this.label1.Size = new System.Drawing.Size(525, 20);
+         this.label1.TabIndex = 0;
+         this.label1.Text = "DST Preview";
+         this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
          // 
          // FormMain
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(448, 367);
-         this.Controls.Add(this.tbxLog);
-         this.Controls.Add(this.panel1);
+         this.ClientSize = new System.Drawing.Size(1036, 720);
+         this.Controls.Add(this.splitContainer1);
          this.Name = "FormMain";
          this.Text = "Text Encoding Converter";
-         this.Load += new System.EventHandler(this.FormMain_Load);
          this.splitContainer1.Panel1.ResumeLayout(false);
-         this.splitContainer1.Panel1.PerformLayout();
          this.splitContainer1.Panel2.ResumeLayout(false);
-         this.splitContainer1.Panel2.PerformLayout();
          ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
          this.splitContainer1.ResumeLayout(false);
+         this.panel4.ResumeLayout(false);
+         this.panel3.ResumeLayout(false);
+         this.panel2.ResumeLayout(false);
+         this.panel6.ResumeLayout(false);
+         this.panel6.PerformLayout();
+         this.panel5.ResumeLayout(false);
+         this.panel5.PerformLayout();
          this.panel1.ResumeLayout(false);
+         this.splitContainer2.Panel1.ResumeLayout(false);
+         this.splitContainer2.Panel2.ResumeLayout(false);
+         ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+         this.splitContainer2.ResumeLayout(false);
+         this.panel7.ResumeLayout(false);
+         this.panel7.PerformLayout();
          this.ResumeLayout(false);
-         this.PerformLayout();
 
       }
 
@@ -178,14 +367,28 @@
 
       private System.Windows.Forms.Button btnDo;
       private System.Windows.Forms.TextBox tbxLog;
-      private System.Windows.Forms.ComboBox cbxSrcEncoding;
       private System.Windows.Forms.OpenFileDialog dlgOpen;
-      private System.Windows.Forms.ComboBox cbxDstEncoding;
-      private System.Windows.Forms.SplitContainer splitContainer1;
-      private System.Windows.Forms.Label label1;
-      private System.Windows.Forms.Label label2;
-      private System.Windows.Forms.Panel panel1;
       private System.Windows.Forms.Button btnHelp;
+      private System.Windows.Forms.ListBox lbxFile;
+      private System.Windows.Forms.SplitContainer splitContainer1;
+      private System.Windows.Forms.Panel panel4;
+      private System.Windows.Forms.Label label2;
+      private System.Windows.Forms.Panel panel3;
+      private System.Windows.Forms.PropertyGrid grdEncoder;
+      private System.Windows.Forms.Label lblEncSetting;
+      private System.Windows.Forms.Panel panel2;
+      private System.Windows.Forms.Button btnDelete;
+      private System.Windows.Forms.Button btnAdd;
+      private System.Windows.Forms.Panel panel6;
+      private System.Windows.Forms.TextBox tbxSrcPreview;
+      private System.Windows.Forms.Label label4;
+      private System.Windows.Forms.Panel panel5;
+      private System.Windows.Forms.Label label3;
+      private System.Windows.Forms.Panel panel1;
+      private System.Windows.Forms.SplitContainer splitContainer2;
+      private System.Windows.Forms.Panel panel7;
+      private System.Windows.Forms.TextBox tbxDstPreview;
+      private System.Windows.Forms.Label label1;
    }
 }
 
