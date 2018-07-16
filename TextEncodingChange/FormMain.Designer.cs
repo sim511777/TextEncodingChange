@@ -62,7 +62,7 @@
          // 
          // cbxSrcEncoding
          // 
-         this.cbxSrcEncoding.DisplayMember = "DisplayName";
+         this.cbxSrcEncoding.DisplayMember = "EncodingName";
          this.cbxSrcEncoding.Dock = System.Windows.Forms.DockStyle.Fill;
          this.cbxSrcEncoding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
          this.cbxSrcEncoding.FormattingEnabled = true;
@@ -78,7 +78,7 @@
          // 
          // cbxDstEncoding
          // 
-         this.cbxDstEncoding.DisplayMember = "DisplayName";
+         this.cbxDstEncoding.DisplayMember = "EncodingName";
          this.cbxDstEncoding.Dock = System.Windows.Forms.DockStyle.Fill;
          this.cbxDstEncoding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
          this.cbxDstEncoding.FormattingEnabled = true;

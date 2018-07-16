@@ -16,15 +16,14 @@ namespace TextEncodingChange {
       }
 
       private void FormMain_Load(object sender, EventArgs e) {
-         foreach (var encoding in Encoding.GetEncodings()) {
-            this.cbxSrcEncoding.Items.Add(encoding);
-            this.cbxDstEncoding.Items.Add(encoding);
-         }
+         var encodings = Encoding.GetEncodings().Select(ei => ei.GetEncoding()).ToArray();
+         this.cbxSrcEncoding.Items.AddRange(encodings);
+         this.cbxDstEncoding.Items.AddRange(encodings);
       }
 
       private void btnDo_Click(object sender, EventArgs e) {
-         var srcEnc = (EncodingInfo)this.cbxSrcEncoding.SelectedItem;
-         var dstEnc = (EncodingInfo)this.cbxDstEncoding.SelectedItem;
+         var srcEnc = (Encoding)this.cbxSrcEncoding.SelectedItem;
+         var dstEnc = (Encoding)this.cbxDstEncoding.SelectedItem;
          if (srcEnc == null || dstEnc == null)
             return;
 
@@ -35,7 +34,7 @@ namespace TextEncodingChange {
 
          foreach (var file in files) {
             // get string
-            var text = File.ReadAllText(file, srcEnc.GetEncoding());
+            var text = File.ReadAllText(file, srcEnc);
 
             // backup original
             var fileName = Path.GetFileName(file);
@@ -46,7 +45,7 @@ namespace TextEncodingChange {
             File.Move(file, backupFile);
 
             // convert
-            File.WriteAllText(file, text, dstEnc.GetEncoding());
+            File.WriteAllText(file, text, dstEnc);
 
             this.tbxLog.AppendText(file + Environment.NewLine);
          }
