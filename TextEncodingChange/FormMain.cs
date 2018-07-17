@@ -20,14 +20,18 @@ namespace TextEncodingChange {
 
       private void Preview() {
          if (this.lbxFile.SelectedItems.Count == 1) {
-            EncodingWorkItem item = (EncodingWorkItem)this.lbxFile.SelectedItem;
+            FileEnc item = (FileEnc)this.lbxFile.SelectedItem;
             byte[] bytesSrc = File.ReadAllBytes(item.FilePath);
             byte[] bytesDst = Encoding.Convert(item.SrcEnc, item.DstEnc, bytesSrc);
             this.tbxSrcPreview.Text = item.SrcEnc.GetString(bytesSrc);;
             this.tbxDstPreview.Text = item.DstEnc.GetString(bytesDst);;
+            this.lblPreviewSrc.Text = $"SRC Preview - {item.SrcEnc.EncodingName}";
+            this.lblPreviewDst.Text = $"DST Preview - {item.DstEnc.EncodingName}";
          } else {
             this.tbxSrcPreview.Clear();
             this.tbxDstPreview.Clear();
+            this.lblPreviewSrc.Text = "SRC Preview";
+            this.lblPreviewDst.Text = "DST Preview";
          }
       }
 
@@ -48,14 +52,14 @@ namespace TextEncodingChange {
          if (this.dlgOpen.ShowDialog(this) != DialogResult.OK)
             return;
          
-         var list1 = this.lbxFile.Items.Cast<EncodingWorkItem>().Select(item => item.FilePath);
+         var list1 = this.lbxFile.Items.Cast<FileEnc>().Select(item => item.FilePath);
          var sameFiles = list1.Intersect(this.dlgOpen.FileNames).ToArray();
          if (sameFiles.Length != 0) {
             MessageBox.Show(this, string.Join("\r\n", sameFiles), "The following files exist in list");
             return;
          }
 
-         var addItems = this.dlgOpen.FileNames.Cast<string>().Select(file => new EncodingWorkItem() { FilePath = file }).ToArray();
+         var addItems = this.dlgOpen.FileNames.Cast<string>().Select(file => new FileEnc() { FilePath = file }).ToArray();
          this.lbxFile.Items.AddRange(addItems);
       }
 
@@ -64,8 +68,15 @@ namespace TextEncodingChange {
       }
 
       private void lbxFile_SelectedIndexChanged(object sender, EventArgs e) {
-         this.grdEncoder.SelectedObjects = this.lbxFile.SelectedItems.Cast<EncodingWorkItem>().ToArray();
-         this.lblEncSetting.Text = $"Encoding Setting - {this.lbxFile.SelectedItems.Count} items";
+         //var workList = this.lbxFile.SelectedItems.Cast<FileEnc>().ToArray();
+         var workList = this.lbxFile.SelectedItems.OfType<FileEnc>().ToArray();
+         this.grdEncoder.SelectedObjects = workList;
+         if (workList.Length == 0)
+            this.lblEncSetting.Text = $"Encoding Setting";
+         else if (workList.Length == 1)
+            this.lblEncSetting.Text = $"Encoding Setting - {Path.GetFileName(workList[0].FilePath)}";
+         else
+            this.lblEncSetting.Text = $"Encoding Setting - {workList.Length} items";
          this.Preview();
       }
 
@@ -74,7 +85,7 @@ namespace TextEncodingChange {
       }
 
       private void btnDo_Click(object sender, EventArgs e) {
-         var items = this.lbxFile.Items.Cast<EncodingWorkItem>();
+         var items = this.lbxFile.Items.Cast<FileEnc>();
          foreach (var item in items) {
             try {
                byte[] original = File.ReadAllBytes(item.FilePath);
@@ -103,7 +114,7 @@ namespace TextEncodingChange {
       }
    }
 
-   class EncodingWorkItem {
+   class FileEnc {
       [Browsable(false)]
       public string FilePath { get; set; }
       [DSP("SRC Encoding"), CVT(typeof(EncodingConverter))]
