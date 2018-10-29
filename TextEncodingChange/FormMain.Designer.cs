@@ -102,6 +102,7 @@
          // 
          // lbxFile
          // 
+         this.lbxFile.AllowDrop = true;
          this.lbxFile.DisplayMember = "FilePath";
          this.lbxFile.Dock = System.Windows.Forms.DockStyle.Fill;
          this.lbxFile.FormattingEnabled = true;
@@ -112,6 +113,8 @@
          this.lbxFile.Size = new System.Drawing.Size(339, 553);
          this.lbxFile.TabIndex = 2;
          this.lbxFile.SelectedIndexChanged += new System.EventHandler(this.lbxFile_SelectedIndexChanged);
+         this.lbxFile.DragDrop += new System.Windows.Forms.DragEventHandler(this.lbxFile_DragDrop);
+         this.lbxFile.DragEnter += new System.Windows.Forms.DragEventHandler(this.lbxFile_DragEnter);
          // 
          // splitContainer1
          // 

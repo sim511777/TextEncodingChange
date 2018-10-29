@@ -51,15 +51,19 @@ namespace TextEncodingChange {
       private void btnAdd_Click(object sender, EventArgs e) {
          if (this.dlgOpen.ShowDialog(this) != DialogResult.OK)
             return;
-         
+
+         this.AddFiles(this.dlgOpen.FileNames);
+      }
+
+      private void AddFiles(string[] filePaths) {
          var list1 = this.lbxFile.Items.Cast<FileEnc>().Select(item => item.FilePath);
-         var sameFiles = list1.Intersect(this.dlgOpen.FileNames).ToArray();
+         var sameFiles = list1.Intersect(filePaths).ToArray();
          if (sameFiles.Length != 0) {
             MessageBox.Show(this, string.Join("\r\n", sameFiles), "The following files exist in list");
             return;
          }
 
-         var addItems = this.dlgOpen.FileNames.Cast<string>().Select(file => new FileEnc() { FilePath = file }).ToArray();
+         var addItems = filePaths.Cast<string>().Select(file => new FileEnc() { FilePath = file }).ToArray();
          this.lbxFile.Items.AddRange(addItems);
       }
 
@@ -111,6 +115,15 @@ namespace TextEncodingChange {
                this.tbxLog.AppendText($"Convert Failed : {item.FilePath} ({item.SrcEnc.EncodingName} -> {item.DstEnc.EncodingName}) : {ex.Message}\r\n");
             }
          }
+      }
+
+      private void lbxFile_DragDrop(object sender, DragEventArgs e) {
+         string[] files = ((string[])e.Data.GetData(DataFormats.FileDrop)).Where(file => File.Exists(file)).ToArray();
+         this.AddFiles(files);
+      }
+
+      private void lbxFile_DragEnter(object sender, DragEventArgs e) {
+         if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effect = DragDropEffects.Copy;
       }
    }
 
